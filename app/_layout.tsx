@@ -4,19 +4,26 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
+// 1. Uvezi AuthProvider
+import { AuthProvider } from "@/contexts/AuthContext";
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack initialRouteName="LoginScreen">
-  {/* Ime mora biti IDENTIČNO datoteci LoginScreen.tsx */}
-  <Stack.Screen name="LoginScreen" options={{ headerShown: false }} />
-  
-  {/* Ime mora biti IDENTIČNO mapi (tabs) */}
-  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-</Stack>
-      <StatusBar style="auto" />
+      {/* 2. Omotaj cijeli Stack unutar AuthProvider-a */}
+      <AuthProvider>
+        <Stack>
+          {/* Glavni tabovi - Expo Router će ovdje učitati tvoj (tabs)/_layout.tsx */}
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          
+          {/* Modalni prozor koji smo spominjali u navigaciji */}
+          <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Informacije' }} />
+        </Stack>
+        
+        <StatusBar style="auto" />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

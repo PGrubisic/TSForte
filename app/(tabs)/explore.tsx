@@ -25,7 +25,7 @@ export default function ExploreScreen() {
       <ThemedView style={styles.container}>
         <ThemedText type="subtitle">Lokacija i kontakt</ThemedText>
         <ThemedText>
-          TS Forte je dostupan za nastupe širom regije. 
+          TS Forte je tamburaški sastav koji je dostupan za nastupe širom regije. 
           Bazirani smo u Posušju, ali sviramo gdje god je dobra fešta!
         </ThemedText>
       </ThemedView>
@@ -36,6 +36,15 @@ export default function ExploreScreen() {
           Od tradicionalnih tamburaških pjesama do modernih hitova prilagođenih vašim željama.
         </ThemedText>
       </ThemedView>
+      <ThemedView style={styles.container}>
+  <ThemedText type="subtitle">Članovi</ThemedText>
+  <ThemedText>
+    Harmonika - Branko Rezo {"\n"}
+    Tamburica - Karlo Miletić {"\n"}
+    Bas gitara- Mario Milas {"\n"}
+    Bugarija - Petar Grubišić
+  </ThemedText>
+</ThemedView>
       
     </ParallaxScrollView>
   );
